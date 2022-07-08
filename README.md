@@ -3,45 +3,61 @@ Repo for running FeatureREDUCE in a virtual environment
 
 Please install Anaconda personal [addition](https://www.anaconda.com/products/distribution) for linux. 
 
-1. Downlaod the repo: `curl -JLO https://codeload.github.com/FeatureREDUCE/FeatureREDUCE/zip/refs/heads/master` 
 
 
-2. Create a virtual environment `run_freduce`
+1. Create a virtual environment `run_freduce`
 
 ```
 conda create -n run_freduce python=3.6
 ```
 
-3. Activate the virtual environment `run_freduce`:
+2. Activate the virtual environment `run_freduce`:
 
 ```
 conda activate run_freduce
 ```
 
-4. Install required packages
+3. Install required packages
 
 ```
 sh install_packages.sh
 ```
 
-5. Unzip the FeatureREDUCE package
+4. Unzip the FeatureREDUCE package
 
 ```
 unzip FeatureREDUCE-master.zip
 ```
 
-6. Go to `FeatureREDUCE-master/freduce/src` and run:
+5. Go to `FeatureREDUCE-master/freduce/src` and run:
 
 ```
 javac FeatureReduce.java
 cp *.class ../bin
 ```
 
+6. Copy envrc `FeatureREDUCE-master/freduce/.envrc`
 
-7. Go to `FeatureREDUCE-master/freduce/` directory and create .envrc file
+```
+cp envrc FeatureREDUCE-master/freduce/.envrc 
+```
 
-Please see the `.envrc` file already present there and change the path accordingly. 
+Please see the `.envrc` file already present there and change the path accordingly. Here are the tips:
 
+- Used the command `which R` to find the path of `R` and set it as `R_HOME`
+
+- You will find `rJava` in `$R_HOME/library/rJava` : set that as `RJAVA_HOME` 
+
+- You need to put `libjvm.so` in `LD_LIBRARY_PATH`. `libjvm.so` can be found in you virtual library's `lib/server` directory
+
+- In your CLASSPATH, `JRI.jar` should be present. This jar file can be found in `$RJAVA_HOME/jri/` 
+
+
+7. Source the `.envrc` file
+
+```
+source FeatureREDUCE-master/freduce/.envrc
+```
 
 8. Go to the `FeatureREDUCE-master/freduce/demo/dream5` and run:
 
