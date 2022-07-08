@@ -59,8 +59,7 @@ Please see the `.envrc` file already present there and change the path according
 source FeatureREDUCE-master/freduce/.envrc
 ```
 
-8. Go to the `FeatureREDUCE-master/freduce/demo/dream5` and run:
-
+8. Run the snakemake pipeline to generate results
 ```
-bash fitModel.sh
+snakemake -np  --snakefile run_feature_reduce.smk correlation_and_rsq/max_trial_{01..05}.tsv --configfile configs/config.yaml -j3
 ```
