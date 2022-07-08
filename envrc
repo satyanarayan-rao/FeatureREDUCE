@@ -1,0 +1,22 @@
+# make sure that the necessary R environment variables are set
+# CHANGE THE R ENVIRONMENT VARIABLES TO MATCH YOUR R INSTALL!!
+R_HOME=/home/satya/workplace/softwares_and_tools/anaconda3/envs/run_freduce/lib/R
+export R_HOME
+
+RJAVA_HOME=/home/satya/workplace/softwares_and_tools/anaconda3/envs/run_freduce/lib/R/library/rJava
+export RJAVA_HOME
+
+
+FR_HOME=/home/satya/workplace/tmp/Run_featureREDUCE/FeatureREDUCE-master/freduce
+export FR_HOME
+
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/home/satya/workplace/softwares_and_tools/anaconda3/envs/run_freduce/lib/server:$RJAVA_HOME/jri
+export LD_LIBRARY_PATH
+
+# augment the CLASSPATH with all the FeatureREDUCE dependencies
+CLASSPATH=$CLASSPATH:$FR_HOME/bin:$FR_HOME/bin/biojava.jar:$FR_HOME/bin/Biojava.suppl.v1.02.jar:$FR_HOME/bin/bytecode.jar:$FR_HOME/bin/commons-cli.jar:$FR_HOME/bin/commons-collections-2.1.jar:$FR_HOME/bin/commons-pool-1.1.jar:$FR_HOME/bin/trove-3.0.2.jar:$FR_HOME/bin/jfreechart-1.0.13.jar:$FR_HOME/bin/jcommon-1.0.16.jar:/home/satya/workplace/softwares_and_tools/anaconda3/envs/run_freduce/lib/R/library/rJava/jri/JRI.jar:$FR_HOME/bin/commons-lang-2.4.jar:$FR_HOME/bin/itextpdf-5.1.0.jar
+export CLASSPATH
+
+# Set the display if you're using Xvfb
+#DISPLAY=:1.0
+#export DISPLAY
