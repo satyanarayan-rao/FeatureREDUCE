@@ -26,7 +26,7 @@ rule run_featureREDUCE:
         pred_out = "prediction/{tf}_trial_{trial}_pred.tsv", 
         log_out = "logs/{tf}_trial_{trial}.log"
     shell:
-        "java -Xmx5000M FeatureReduce {input.freduce_init} -c 0 2 3 -ids {wildcards.tf}"
+        "java -Xmx2000M FeatureReduce {input.freduce_init} -c 0 2 3 -ids {wildcards.tf}"
         " -kmer -l selex -i {input.train_out} -a {input.test_template}"
         " -o {output.pred_out} -displayMotifs No 2>&1 | tee {output.log_out}"
 
@@ -35,8 +35,10 @@ rule get_correlation:
         test_out = "train_test_data/{tf}_trial_{trial}_test.tsv", 
         pred_out = "prediction/{tf}_trial_{trial}_pred.tsv"
     output:
-        metric = "correlation_and_rsq/{tf}_trial_{trial}.tsv"
+        metric = "correlation_and_rsq/{tf}_trial_{trial}.tsv", 
+        plot_pdf = "plots/{tf}_trial_{trial}.pdf",
+        plot_png = "plots/{tf}_trial_{trial}.png",
     shell:
-        "Rscript scripts/cor_or_rsq.R {input.test_out} {input.pred_out} trial_{wildcards.trial} {wildcards.tf} > {output.metric}"
+        "Rscript scripts/cor_or_rsq.R {input.test_out} {input.pred_out} trial_{wildcards.trial} {wildcards.tf} {output.plot_pdf} {output.plot_png} > {output.metric}"
+        " "
        
-    

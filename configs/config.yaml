@@ -1,2 +1,4 @@
 selex_data:
     max: "selex_data/r0_r1_max_selex_seq_10mer_150.txt"
+    mef2b: "selex_data/r0_r1_mef2b_selex_seq_10mer_100.txt"
+    p53: "selex_data/r0_r1_p53_selex_seq_10mer_300.txt"

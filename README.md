@@ -61,5 +61,5 @@ source FeatureREDUCE-master/freduce/.envrc
 
 8. Run the snakemake pipeline to generate results (first run with `-np` flag to see if dry run looks good, then remove `-np` flag and run to generate the result)
 ```
-snakemake -np  --snakefile run_feature_reduce.smk correlation_and_rsq/max_trial_{01..05}.tsv --configfile configs/config.yaml -j3
+snakemake -np  --snakefile run_feature_reduce.smk correlation_and_rsq/{max,mef2b,p53}_trial_{01..10}.tsv --configfile configs/config.yaml -j3
 ```
